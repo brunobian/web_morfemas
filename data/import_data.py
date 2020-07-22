@@ -13,26 +13,26 @@ drop_talbes = 1
 conn = psycopg2.connect(connectStr)
 cur = conn.cursor()
 
-#~ # Armo tabla palabras
-#~ f = io.open('por_palabras.csv', encoding='latin-1')
-#~ db_text = []
-#~ i = 0
-#~ for l in f.readlines()[1:]:
-    #~ id = i
-    #~ palabra = l.split(',',2)
-    #~ sufijo =  l.split(',',0)
-    #~ numero =  l.split(',',1)
-    #~ sufijada =  l.split(',',3)
+# Armo tabla palabras
+f = io.open('por_palabras.csv', encoding='latin-1')
+db_text = []
+i = 0
+for l in f.readlines()[1:]:
+    id = i
+    palabra = l.split(',',2)
+    sufijo =  l.split(',',0)
+    numero =  l.split(',',1)
+    sufijada =  l.split(',',3)
     
-    #~ db_text.append((id, palabra, sufijo, numero, sufijada))
-    #~ i = i+1
+    db_text.append((id, palabra, sufijo, numero, sufijada))
+    i = i+1
 
-#~ for i in db_text:
-	#~ print(i[0])
-#~ cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s)',db_text)
-#~ conn.commit()
-#~ f.close()
-#~ cur = conn.cursor()
+for i in db_text:
+	print(i[0])
+cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s)',db_text)
+conn.commit()
+f.close()
+cur = conn.cursor()
 
 # Armo tabla sufijo
 f = io.open('por_sufijos.csv', encoding='latin-1')
