@@ -2,7 +2,7 @@
 
 # -*- coding: UTF-8 -*-
 from django.http import HttpResponse
-from cloze.models import *
+from morfemas.models import *
 from django.template import RequestContext,Context, loader
 import calendar,datetime
 from django.utils import timezone
