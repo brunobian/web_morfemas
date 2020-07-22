@@ -15,6 +15,7 @@ import json
 import os
 import tempfile
 import zipfile 
+import pandas as pd
 
 def morfemas(request):
 	t = loader.get_template('morfemas.html')
@@ -40,9 +41,11 @@ def search(request):
 		c.append(i.col3)
 
 	s = {'col1':a,'col2':b,'col3':c}	
+	df = pd.DataFrame.from_dict(s)
+	s_html = df.to_html()
 
 	c={'request':request,
-		'search':s}
+		'search':s_html}
 		
 	return HttpResponse(t.render(c))
 
