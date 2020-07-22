@@ -46,13 +46,15 @@ db_text = []
 i = 0
 for l in f.readlines()[1:]:
     id = i
-    Sufijo              = l.split(',',0)
-    Numero              = l.split(',',1)
-    frec_afijada        = int(l.split(',',2))
-    frec_pseudoafijada  = int(l.split(',',3))
-    count_afijada       = int(l.split(',',4))
-    count_pseudoafijada = float(l.split(',',5))
-    prop_count_afij     = float(l.split(',',6))
+    tmp = l.split(',')
+    print(tmp)
+    Sufijo              = tmp[0]
+    Numero              = tmp[1]
+    frec_afijada        = int(tmp[2])
+    frec_pseudoafijada  = int(tmp[3])
+    count_afijada       = int(tmp[4])
+    count_pseudoafijada = float(tmp[5])
+    prop_count_afij     = float(tmp[6])
     
     db_text.append((id, Sufijo, Numero, frec_afijada, frec_pseudoafijada, count_afijada, count_pseudoafijada, prop_count_afij))
     i = i+1
