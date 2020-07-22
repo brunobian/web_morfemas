@@ -1,0 +1,10 @@
+Base de Datos
+
+Antes de manage.py
+$ CREATE DATABASE morfemas -U brunobian;
+$ ALTER USER brunobian WITH ENCRYPTED PASSWORD 'tusam.vive';
+
+En el import.py
+$ CREATE TABLE morfemas_text (id serial NOT NULL PRIMARY KEY, col1 VARCHAR (10000), col2 VARCHAR (100000 ), col3 VARCHAR ( 100000 ), col4 VARCHAR ( 1000000 ));
+$ GRANT ALL PRIVILEGES ON TABLE morfemas_text TO brunobian;
+

@@ -12,25 +12,67 @@ connectStr="dbname='"+database+"' user='"+user+"' host='"+host+"' password='"+pa
 conn = psycopg2.connect(connectStr)
 cur = conn.cursor()
 
-cur.execute('INSERT INTO morfemas_text  VALUES (%s,%s,%s,%s)',db_text)
 
+# Armo tabla palabras
+cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, 
+											Palabra VARCHAR (10000), 
+											Sufijo VARCHAR (100000 ), 
+											Número VARCHAR ( 100000 ), 
+											Sufijada VARCHAR ( 1000000 ));')
+cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_palabra TO brunobian;')
 
-f = io.open('textos.csv', encoding='latin-1')
+f = io.open('por_palabras.csv', encoding='latin-1')
 db_text = []
-for l in f.readlines():
-    sl = l.split(',',3)
-    id = int(sl[0])
-    textnum = int(sl[1])
-    textclass = int(sl[2])
-    #text = unicode(sl[3][0:-1],'iso-8859-15')
-    text = sl[3][0:-1]
-    #print id, textnum, textclass, text
+i = 0
+for l in f.readlines()[1:]:
+    id = i
+    palabra = l.split(',',2)
+    sufijo =  l.split(',',0)
+    numero =  l.split(',',1)
+    sufijada =  l.split(',',3)
     
-    db_text.append((id,textnum,textclass,text))
+    db_text.append((id, palabra, sufijo, numero, sufijada))
+    i = i+1
 
 for i in db_text:
 	print(i[0])
-cur.executemany('INSERT INTO morfemas_text  VALUES (%s,%s,%s,%s)',db_text)
+cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s)',db_text)
+conn.commit()
+f.close()
+cur = conn.cursor()
+
+# Armo tabla sufijo
+cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, 
+											Sufijo VARCHAR (100000 ), 
+											Número VARCHAR ( 100000 ), 
+											frec_afijada INT,
+											frec_pseudoafijada INT,
+											count_afijada INT,
+											count_pseudoafijada INT,
+											prop_frec_afij float(24),
+											prop_count_afij float(24));')
+
+cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_sufijo TO brunobian;')
+
+f = io.open('por_sufijos.csv', encoding='latin-1')
+db_text = []
+i = 0
+for l in f.readlines()[1:]:
+    id = i
+    Sufijo              = l.split(',',0)
+    Numero              = l.split(',',1)
+    frec_afijada        = int(l.split(',',2))
+    frec_pseudoafijada  = int(l.split(',',3))
+    count_afijada       = int(l.split(',',4))
+    count_pseudoafijada = float(l.split(',',5))
+    prop_count_afij     = float(l.split(',',6))
+    
+    db_text.append((id, Sufijo, Numero, frec_afijada, frec_pseudoafijada, count_afijada, count_pseudoafijada, prop_count_afij))
+    i = i+1
+
+for i in db_text:
+	print(i[0])
+cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
