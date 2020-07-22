@@ -54,7 +54,7 @@ for l in f.readlines()[1:]:
 
 for i in db_text:
 	print(i[0])
-cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
+cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
