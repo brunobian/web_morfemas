@@ -24,6 +24,11 @@
 						
 						<p> Este seria el resultado {{ search }}</p>
 					
+						<ul>
+						{% for key, value in search.items %} 
+						  <li>{{key}} - {{value}}</li>
+						{% endfor %}
+						</ul>
 						
 					</div>
 				</div>
