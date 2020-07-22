@@ -31,7 +31,11 @@ def search(request):
 	keys=[i for i in q.dict().keys()]
 	k = keys[0]
 	
-	search = pd.DataFrame(list(Sufijo.objects.filter(sufijo__contains=q[k]).values()))
+	if k == 'sufijo':
+		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo__contains=q[k]).values()))
+	elif k == 'palabra':
+		search = pd.DataFrame(list(Palabra.objects.filter(sufijo__contains=q[k]).values()))
+		
 	s_html = search.to_html()
 
 	c={'request':request,
