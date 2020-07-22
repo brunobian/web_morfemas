@@ -16,10 +16,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         #'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'oraciones_2020_new',                      # Or path to database file if using sqlite3.
+        'NAME': 'morfemas',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'cloze',
-        'PASSWORD': '23571113',
+        'USER': 'brunobian',
+        'PASSWORD': 'tusam.vive',
         'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
