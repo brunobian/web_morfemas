@@ -14,11 +14,7 @@ cur = conn.cursor()
 
 
 # Armo tabla palabras
-cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, 
-											Palabra VARCHAR (10000), 
-											Sufijo VARCHAR (100000 ), 
-											Número VARCHAR ( 100000 ), 
-											Sufijada VARCHAR ( 1000000 ));')
+cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, Palabra VARCHAR (10000), Sufijo VARCHAR (100000 ), Número VARCHAR ( 100000 ), Sufijada VARCHAR ( 1000000 ));')
 cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_palabra TO brunobian;')
 
 f = io.open('por_palabras.csv', encoding='latin-1')
