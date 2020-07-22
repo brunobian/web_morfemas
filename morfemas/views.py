@@ -31,7 +31,9 @@ def search(request):
 	k = keys[0]
 	
 	search = Text.objects.filter(col1__contains=q[k])
-	a = b = c = []
+	a = []
+	b = []
+	c = []
 	for i in search:
 		a.append(i.col1)
 		b.append(i.col2)
