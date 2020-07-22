@@ -20,7 +20,7 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
-SITE_NAME='Cloze_Task_2020'
+SITE_NAME='Buscador de Morfemas (Beta)'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -92,7 +92,7 @@ INSTALLED_APPS = (
     #'debug_toolbar',
 
     # My APPS
-    'cloze',
+    'morfemas',
 )
 
 # A sample logging configuration. The only tangible logging

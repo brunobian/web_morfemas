@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from cloze import views
+from morfemas import views
 from django.views.static import *
 
 admin.autodiscover()
