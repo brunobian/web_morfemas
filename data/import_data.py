@@ -48,14 +48,15 @@ for l in f.readlines()[1:]:
     frec_pseudoafijada  = float(tmp[3])
     count_afijada       = float(tmp[4])
     count_pseudoafijada = float(tmp[5])
-    prop_count_afij     = float(tmp[6])
+    prop_frec_afij      = float(tmp[6])
+    prop_count_afij     = float(tmp[7])
     
-    db_text.append((id, Sufijo, Numero, frec_afijada, frec_pseudoafijada, count_afijada, count_pseudoafijada, prop_count_afij))
+    db_text.append((id, Sufijo, Numero, frec_afijada, frec_pseudoafijada, count_afijada, count_pseudoafijada, prop_frec_afij, prop_count_afij))
     i = i+1
 
 for i in db_text:
 	print(i[0])
-cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
+cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
