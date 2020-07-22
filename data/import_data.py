@@ -19,16 +19,16 @@ db_text = []
 i = 0
 for l in f.readlines()[1:]:
     id = i
-    palabra = l.split(',',2)
-    sufijo =  l.split(',',0)
-    numero =  l.split(',',1)
-    sufijada =  l.split(',',3)
+    tmp = l.split(',')
+    print(tmp)
+    palabra = tmp[2]
+    sufijo =  tmp[0]
+    numero =  tmp[1]
+    sufijada =  tmp[3]
     
     db_text.append((id, palabra, sufijo, numero, sufijada))
     i = i+1
 
-for i in db_text:
-	print(i[0])
 cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
@@ -54,8 +54,6 @@ for l in f.readlines()[1:]:
     db_text.append((id, Sufijo, Numero, frec_afijada, frec_pseudoafijada, count_afijada, count_pseudoafijada, prop_frec_afij, prop_count_afij))
     i = i+1
 
-for i in db_text:
-	print(i[0])
 cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
