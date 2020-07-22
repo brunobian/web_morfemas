@@ -23,27 +23,27 @@
 						<br>
 						
 						<p> Este seria el resultado </p>
-
-<table>
-  <tr>
-    {% for key in search.keys %}
-        <th>{{key}}</th>
-    {% endfor %}
-  </tr>
-  <tr>
-    {% for value in search.values %}
-        <td>
-         {% for v in value %}
-           {{v}}
-	   {% endfor %}
-       </td>
-    {% endfor %}
-  </tr>
-</table>
-						
 					</div>
 				</div>
 		</div>	
+		<table>
+		  <tr>
+			{% for key in search.keys %}
+				<th>{{key}}</th>
+			{% endfor %}
+		  </tr>
+		  <tr>
+			{% for value in search.values %}
+				<td>
+				 {% for v in value %}
+				   {{v}}
+			   {% endfor %}
+			   </td>
+			{% endfor %}
+		  </tr>
+		</table>
+		
+
 	
 	</body>
 </html>
