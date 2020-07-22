@@ -14,7 +14,7 @@ conn = psycopg2.connect(connectStr)
 cur = conn.cursor()
 
 # Armo tabla palabras
-f = io.open('por_palabras.csv', encoding='latin-1')
+f = io.open('por_palabras.csv', encoding='utf-8')
 db_text = []
 i = 0
 for l in f.readlines()[1:]:
@@ -35,7 +35,7 @@ f.close()
 cur = conn.cursor()
 
 # Armo tabla sufijo
-f = io.open('por_sufijos.csv', encoding='latin-1')
+f = io.open('por_sufijos.csv', encoding='utf-8')
 db_text = []
 i = 0
 for l in f.readlines()[1:]:
