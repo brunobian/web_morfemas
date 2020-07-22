@@ -30,10 +30,12 @@ def search(request):
 	keys=[i for i in q.dict().keys()]
 	k = keys[0]
 	
-	search = Sufijo.objects.filter(sufijo__contains=q[k])	
+	search = Text.objects.filter(col1__contains=q[k])
+        for i in search:
+            a = i.col1
 
 	c={'request':request,
-		'search':search}
+		'search':a}
 		
 	return HttpResponse(t.render(c))
 

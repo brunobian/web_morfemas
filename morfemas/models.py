@@ -20,9 +20,10 @@ class Palabra(models.Model):
     sufijo = models.CharField(max_length=10000)
 
 class Text(models.Model):
-    textNumber = models.IntegerField()
-    textClass = models.IntegerField()
-    body = models.CharField(max_length=100000)
+    col1= models.CharField(max_length=100000)
+    col2 = models.CharField(max_length=100000)
+    col3 = models.CharField(max_length=100000)
+    col4 = models.CharField(max_length=100000)
 
     def __unicode__(self):
         return(self.body)
