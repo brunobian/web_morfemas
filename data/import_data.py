@@ -12,6 +12,9 @@ connectStr="dbname='"+database+"' user='"+user+"' host='"+host+"' password='"+pa
 conn = psycopg2.connect(connectStr)
 cur = conn.cursor()
 
+cur.execute('INSERT INTO morfemas_text  VALUES (%s,%s,%s,%s)',db_text)
+
+
 f = io.open('textos.csv', encoding='latin-1')
 db_text = []
 for l in f.readlines():
