@@ -31,12 +31,17 @@ def search(request):
 	k = keys[0]
 	
 	search = Text.objects.filter(col1__contains=q[k])
-	a = []
+	a = b = c = d = []
 	for i in search:
 		a.append(i.col1)
+		b.append(i.col2)
+		c.append(i.col3)
+		d.append(i.col4)
+
+	s = {'col1':a,'col2':b,'col3':c,'col4':d}	
 
 	c={'request':request,
-		'search':a}
+		'search':s}
 		
 	return HttpResponse(t.render(c))
 
