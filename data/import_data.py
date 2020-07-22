@@ -13,15 +13,7 @@ drop_talbes = 1
 conn = psycopg2.connect(connectStr)
 cur = conn.cursor()
 
-if drop_talbes:
-	cur.execute('DROP TABLE morfemas_palabra;')
-	cur.execute('DROP TABLE morfemas_sufijo;')
-
-
 # Armo tabla palabras
-cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, palabra VARCHAR (10000), sufijo VARCHAR (10000), numero VARCHAR (10000), sufijada VARCHAR (100000));')
-cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_palabra TO brunobian;')
-
 f = io.open('por_palabras.csv', encoding='latin-1')
 db_text = []
 i = 0
@@ -43,9 +35,6 @@ f.close()
 cur = conn.cursor()
 
 # Armo tabla sufijo
-cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, sufijo VARCHAR (10000), numero VARCHAR (10000), frec_afijada float(1), frec_pseudoafijada float(1), count_afijada float(1),count_pseudoafijada float(1), prop_frec_afij float(24), prop_count_afij float(24));')
-cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_sufijo TO brunobian;')
-
 f = io.open('por_sufijos.csv', encoding='latin-1')
 db_text = []
 i = 0
