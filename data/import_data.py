@@ -21,10 +21,10 @@ for l in f.readlines()[1:]:
     id = i
     tmp = l.split(',')
     print(tmp)
-    palabra = tmp[2]
-    sufijo =  tmp[0]
-    numero =  tmp[1]
-    sufijada =  tmp[3]
+    palabra = tmp[2].strip()
+    sufijo =  tmp[0].strip()
+    numero =  tmp[1].strip()
+    sufijada =  tmp[3].strip()
     
     db_text.append((id, palabra, sufijo, numero, sufijada))
     i = i+1
@@ -42,8 +42,8 @@ for l in f.readlines()[1:]:
     id = i
     tmp = l.split(',')
     print(tmp)
-    Sufijo              = tmp[0]
-    Numero              = tmp[1]
+    Sufijo              = tmp[0].strip()
+    Numero              = tmp[1].strip()
     frec_afijada        = float(tmp[2])
     frec_pseudoafijada  = float(tmp[3])
     count_afijada       = float(tmp[4])
