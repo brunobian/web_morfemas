@@ -52,7 +52,6 @@ i = 0
 for l in f.readlines()[1:]:
     id = i
     tmp = l.split(',')
-    print(tmp)
     Sufijo              = tmp[0]
     Numero              = tmp[1]
     frec_afijada        = float(tmp[2])
