@@ -32,9 +32,9 @@ def search(request):
 	k = keys[0]
 	
 	if k == 'sufijo':
-		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo__contains=q[k]).values()))
+		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
 	elif k == 'palabra':
-		search = pd.DataFrame(list(Palabra.objects.filter(palabra__contains=q[k]).values()))
+		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
 		
 	s_html = search.to_html()
 
