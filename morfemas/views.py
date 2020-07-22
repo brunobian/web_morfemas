@@ -31,18 +31,8 @@ def search(request):
 	keys=[i for i in q.dict().keys()]
 	k = keys[0]
 	
-	search = Text.objects.filter(col1__contains=q[k])
-	a = []
-	b = []
-	c = []
-	for i in search:
-		a.append(i.col1)
-		b.append(i.col2)
-		c.append(i.col3)
-
-	s = {'col1':a,'col2':b,'col3':c}	
-	df = pd.DataFrame.from_dict(s)
-	s_html = df.to_html()
+	search = pd.DataFrame(list(Sufijo.objects.filter(Sufijo__contains=q[k])))
+	s_html = search.to_html()
 
 	c={'request':request,
 		'search':s_html}
