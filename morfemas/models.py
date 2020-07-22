@@ -12,13 +12,13 @@ import json
 	
 class Sufijo(models.Model):
     Sufijo = models.CharField(max_length=10000)
-	Numero = models.CharField(max_length=10000)
-	frec_afijada = models.FloatField()
-	frec_pseudoafijada = models.FloatField()
-	count_afijada = models.FloatField()
-	count_pseudoafijada = models.FloatField()
-	prop_frec_afij = models.FloatField()
-	prop_count_afij = models.FloatField()
+    Numero = models.CharField(max_length=10000)
+    frec_afijada = models.FloatField()
+    frec_pseudoafijada = models.FloatField()
+    count_afijada = models.FloatField()
+    count_pseudoafijada = models.FloatField()
+    prop_frec_afij = models.FloatField()
+    prop_count_afij = models.FloatField()
     
 
 class Palabra(models.Model):
