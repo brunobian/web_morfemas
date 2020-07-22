@@ -18,3 +18,11 @@ class Sufijo(models.Model):
 class Palabra(models.Model):
     palabra = models.CharField(max_length=10000)
     sufijo = models.CharField(max_length=10000)
+
+class Text(models.Model):
+    textNumber = models.IntegerField()
+    textClass = models.IntegerField()
+    body = models.CharField(max_length=100000)
+
+    def __unicode__(self):
+        return(self.body)

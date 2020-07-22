@@ -27,7 +27,7 @@ for l in f.readlines():
 
 for i in db_text:
 	print(i[0])
-cur.executemany('INSERT INTO cloze_text  VALUES (%s,%s,%s,%s)',db_text)
+cur.executemany('INSERT INTO morfemas_text  VALUES (%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
