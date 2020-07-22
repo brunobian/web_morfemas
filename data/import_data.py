@@ -38,7 +38,7 @@ cur = conn.cursor()
 # cur = conn.cursor()
 
 # Armo tabla sufijo
-cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, Sufijo VARCHAR (100000 ), Número VARCHAR ( 100000 ), frec_afijada INT, frec_pseudoafijada INT, count_afijada INT,count_pseudoafijada INT, prop_frec_afij float(24), prop_count_afij float(24));')
+cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, Sufijo VARCHAR (100000 ), Número VARCHAR ( 100000 ), frec_afijada float(1), frec_pseudoafijada float(1), count_afijada float(1),count_pseudoafijada float(1), prop_frec_afij float(24), prop_count_afij float(24));')
 cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_sufijo TO brunobian;')
 
 f = io.open('por_sufijos.csv', encoding='latin-1')
@@ -50,9 +50,9 @@ for l in f.readlines()[1:]:
     print(tmp)
     Sufijo              = tmp[0]
     Numero              = tmp[1]
-    frec_afijada        = int(tmp[2])
-    frec_pseudoafijada  = int(tmp[3])
-    count_afijada       = int(tmp[4])
+    frec_afijada        = float(tmp[2])
+    frec_pseudoafijada  = float(tmp[3])
+    count_afijada       = float(tmp[4])
     count_pseudoafijada = float(tmp[5])
     prop_count_afij     = float(tmp[6])
     
