@@ -38,16 +38,7 @@ f.close()
 cur = conn.cursor()
 
 # Armo tabla sufijo
-cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, 
-											Sufijo VARCHAR (100000 ), 
-											Número VARCHAR ( 100000 ), 
-											frec_afijada INT,
-											frec_pseudoafijada INT,
-											count_afijada INT,
-											count_pseudoafijada INT,
-											prop_frec_afij float(24),
-											prop_count_afij float(24));')
-
+cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, Sufijo VARCHAR (100000 ), Número VARCHAR ( 100000 ), frec_afijada INT, frec_pseudoafijada INT, count_afijada INT,count_pseudoafijada INT, prop_frec_afij float(24), prop_count_afij float(24));')
 cur.execute('GRANT ALL PRIVILEGES ON TABLE morfemas_sufijo TO brunobian;')
 
 f = io.open('por_sufijos.csv', encoding='latin-1')
