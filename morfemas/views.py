@@ -34,7 +34,7 @@ def search(request):
 	if k == 'sufijo':
 		por_palabra = False
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
-		sufijo = ''
+		sufijo = q[k]
 	elif k == 'palabra':
 		por_palabra = True
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
