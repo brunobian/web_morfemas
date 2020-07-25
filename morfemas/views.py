@@ -54,12 +54,16 @@ def search(request):
 		sufijo = search['Sufijo'][0]
 	
 	s_html = search.to_html(index=False)
+	
+	if q['bajar']:
+		bajar=True
 
 	c={'request':request,
 		'search':s_html,
 		'por_palabra':por_palabra,
 		'sufijo':sufijo,
-		'warning':warning}
+		'warning':warning,
+		'bajar':bajar}
 		
 	return HttpResponse(t.render(c))
 
