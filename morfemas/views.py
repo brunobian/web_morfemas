@@ -55,7 +55,8 @@ def search(request):
 	
 	s_html = search.to_html(index=False)
 	
-	if q['bajar']:
+	bajar = False
+	if q['bajar'] == 'True':
 		bajar=True
 
 	c={'request':request,
