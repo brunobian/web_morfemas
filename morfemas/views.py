@@ -39,6 +39,10 @@ def search(request):
 		por_palabra = True
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
 		sufijo = search['sufijo'][0]
+	elif k == 'palsPorSuj':
+		por_palabra = True
+		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k]).values()))		
+		sufijo = search['sufijo'][0]
 		
 	s_html = search.to_html()
 
