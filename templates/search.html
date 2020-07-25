@@ -57,17 +57,13 @@
 {%else%}
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
-			<div>
-				<input id=sufijo class="form-control" name="sufijo" type="hidden"> 
-				<input class="form-control" name="bajar" value="True"  type="hidden"> 
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
-			</div>
+			<input id=sufijo class="form-control" name="sufijo" type="hidden"> 
+			<input class="form-control" name="bajar" value="True"  type="hidden"> 
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<div style="margin-bottom:1%">
-				<input id=sufijo name="palsPorSuj" value="" type="hidden" >
-				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
-			</div>
+			<input id=sufijo name="palsPorSuj" value="" type="hidden" >
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
 	</div>
 {%endif%}
