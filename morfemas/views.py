@@ -31,12 +31,15 @@ def search(request):
 	keys=[i for i in q.dict().keys()]
 	k = keys[0]
 	
+	warning = False
 	if k == 'sufijo':
 		por_palabra = False
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
 		search = search[['sufijo', 'numero', 'count_afijada', 'frec_afijada', 'count_pseudoafijada', 'frec_pseudoafijada', 'prop_count_afij', 'prop_frec_afij']]
 		search.columns = ['Sufijo', 'Número', 'Count afijadas', 'Freq afijadas', 'Count pseudoafijadas', 'Freq pseudoafijadas', 'Prop Count Afijadas', 'Prop Freq Afijadas']
 		sufijo = q[k]
+		if sufijo == 'aca':
+			warning = True
 	elif k == 'palabra':
 		por_palabra = True
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
@@ -49,13 +52,16 @@ def search(request):
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		sufijo = search['Sufijo'][0]
-		
+			
+	
+	
 	s_html = search.to_html(index=False)
 
 	c={'request':request,
 		'search':s_html,
 		'por_palabra':por_palabra,
-		'sufijo':sufijo}
+		'sufijo':sufijo,
+		'warning':warning}
 		
 	return HttpResponse(t.render(c))
 
