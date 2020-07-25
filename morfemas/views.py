@@ -34,18 +34,18 @@ def search(request):
 	if k == 'sufijo':
 		por_palabra = False
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
-		URL = ''
+		sufijo = ''
 	elif k == 'palabra':
 		por_palabra = True
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
-		URL = 'search/?sufijo=' + search['sufijo']
+		sufijo = search['sufijo']
 		
 	s_html = search.to_html()
 
 	c={'request':request,
 		'search':s_html,
 		'por_palabra':por_palabra,
-		'URL':URL}
+		'sufijo':sufijo}
 		
 	return HttpResponse(t.render(c))
 
