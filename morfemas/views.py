@@ -52,8 +52,6 @@ def search(request):
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		sufijo = search['Sufijo'][0]
-			
-	
 	
 	s_html = search.to_html(index=False)
 
