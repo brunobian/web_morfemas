@@ -42,13 +42,13 @@ def search(request):
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
 		search = search[['palabra', 'sufijo', 'numero', 'sufijada']]
 		search.columns = ['Palabra', 'Sufijo', 'Número', 'Sufijada']
-		sufijo = search['sufijo'][0]
+		sufijo = search['Sufijo'][0]
 	elif k == 'palsPorSuj':
 		por_palabra = True
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k]).values()))		
 		search = search[['palabra', 'sufijo', 'numero', 'sufijada']]
 		search.columns = ['Palabra', 'Sufijo', 'Número', 'Sufijada']
-		sufijo = search['sufijo'][0]
+		sufijo = search['Sufijo'][0]
 		
 	s_html = search.to_html(index=False)
 
