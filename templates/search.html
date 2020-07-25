@@ -24,9 +24,20 @@
 					</div>
 				</div>
 		</div>	
+
 <div align=center>
  {{ search | safe }}
 </div>
+
+{%if por_palabra%} 
+	<div>
+		<form class="form-signin" method="get" action={{ URL }}>
+			<div style="margin-bottom:1%">
+				<input class="btn btn-lg btn-loggin btn-block" style ="margin-bottom:20px" type="submit" value="Buscar por sufijo">
+			</div>
+		</form>
+	</div>
+{%endif%}
 
 	
 	</body>
