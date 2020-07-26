@@ -34,7 +34,6 @@ def search(request):
 	warning = False
 	palabra = ''
 	if k == 'sufijo':
-		por_palabra = False
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
 		search = search[['sufijo', 'numero', 'count_afijada', 'frec_afijada', 'count_pseudoafijada', 'frec_pseudoafijada', 'prop_count_afij', 'prop_frec_afij']]
 		search.columns = ['Sufijo', 'Número', 'Count afijadas', 'Freq afijadas', 'Count pseudoafijadas', 'Freq pseudoafijadas', 'Prop Count Afijadas', 'Prop Freq Afijadas']
@@ -42,14 +41,12 @@ def search(request):
 		if sufijo == 'aca':
 			warning = True
 	elif k == 'palabra':
-		por_palabra = True
 		palabra = q[k]
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=palabra).values()))
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		sufijo = search['Sufijo'][0]
 	elif k == 'palsPorSuj':
-		por_palabra = True
 		palabra = q[k]
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k]).values()))		
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
@@ -60,7 +57,7 @@ def search(request):
 	
 	c={'request':request,
 		'search':s_html,
-		'por_palabra':por_palabra,
+		'search_type':k,
 		'sufijo':sufijo,
 		'palabra':palabra,
 		'warning':warning}
