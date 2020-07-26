@@ -11,13 +11,11 @@
 
 		<script>
 			function variables() {
-				var palabra  = "{{palabra}}";
-				document.getElementById('bajar_palabra').value = palabra;
+				var bajar  = "{{bajar}}";
+				document.getElementById('bajar').value = bajar;
 
-				var sufijo  = "{{sufijo}}";
-				document.getElementById('sufijo').value = sufijo;
-				document.getElementById('sufijo2').value = sufijo;
-				
+				var newSearch  = "{{newSearch}}";
+				document.getElementById('newSearch').value = newSearch;				
 			}
 		</script>
 		
@@ -54,12 +52,12 @@
 {%if search_type == "palabra"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
-			<input name="palabra" value=""     type="hidden" id=bajar_palabra > 
+			<input name="palabra" value=""     type="hidden" id=bajar > 
 			<input name="bajar"   value="True" type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<input name="sufijo" value=""      type="hidden" id=sufijo >
+			<input name="sufijo" value=""      type="hidden" id=newSearch >
 			<input name="bajar"  value="False" type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar este sufijo" style="margin-left:25%; width:50%">		
 		</form>
@@ -67,26 +65,26 @@
 {%elif search_type == "sufijo"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
-			<input id=bajar_sufijo  name="sufijo" type="hidden"> 
-			<input name="bajar" value="True"  type="hidden"> 
+			<input name="sufijo" value=""      type="hidden" id=bajar> 
+			<input name="bajar"  value="True"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<input id=sufijo2 name="palsPorSuf" value="" type="hidden" >
-			<input name="bajar" value="False"  type="hidden"> 
+			<input name="palsPorSuf" value=""       type="hidden" id=newSearch >
+			<input name="bajar"      value="False"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
 	</div>
 {%elif search_type == "palsPorSuf"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
-			<input id=sufijo class="form-control" name="sufijo" type="hidden"> 
-			<input name="bajar" value="True"  type="hidden"> 
+			<input name="sufijo" value =""     type="hidden" id=bajar> 
+			<input name="bajar"  value="True"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<input id=sufijo2 name="palsPorSuf" value="" type="hidden" >
-			<input name="bajar" value="False"  type="hidden"> 
+			<input name="palsPorSuf" value=""       type="hidden" id=newSearch>
+			<input name="bajar"      value="False"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
 	</div>
