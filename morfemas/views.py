@@ -62,12 +62,13 @@ def search(request):
 		'warning':warning}
 
 	if q['bajar'] == 'True':
+		response = HttpResponse(content_type='text/csv')
+		response['Content-Disposition'] = 'attachment; filename=export.csv'
 		search.to_csv(path_or_buf=response)
-		response = HttpResponse(csv, content_type='text/csv')
-		response['Content-Disposition'] = 'attachment; filename=subject_log.csv'
-		return response
 	else:
-		return HttpResponse(t.render(c))
+		response = HttpResponse(t.render(c))
+		
+	return response
 	
 	
 	
