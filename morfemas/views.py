@@ -40,7 +40,7 @@ def search(request):
 		if newSearch == 'aca':
 			warning = True
 	elif k == 'palabra':
-		search = pd.DataFrame(list(Palabra.objects.filter(palabra=palabra).values()))
+		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		newSearch = search['Sufijo'][0]
