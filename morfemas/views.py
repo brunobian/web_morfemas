@@ -32,6 +32,7 @@ def search(request):
 	k = keys[0]
 	
 	warning = False
+	palabra = ''
 	if k == 'sufijo':
 		por_palabra = False
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k]).values()))
@@ -42,7 +43,8 @@ def search(request):
 			warning = True
 	elif k == 'palabra':
 		por_palabra = True
-		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k]).values()))
+		palabra = q[k]
+		search = pd.DataFrame(list(Palabra.objects.filter(palabra=palabra).values()))
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		sufijo = search['Sufijo'][0]
@@ -59,6 +61,7 @@ def search(request):
 		'search':s_html,
 		'por_palabra':por_palabra,
 		'sufijo':sufijo,
+		'palabra':palabra,
 		'warning':warning}
 
 	if q['bajar'] == 'True':
