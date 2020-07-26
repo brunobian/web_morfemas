@@ -44,7 +44,7 @@ def search(request):
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 		newSearch = search['Sufijo'][0]
-	elif k == 'palsPorSuj':
+	elif k == 'palsPorSuf':
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k]).values()))		
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
