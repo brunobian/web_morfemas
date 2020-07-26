@@ -55,14 +55,32 @@ def search(request):
 	
 	s_html = search.to_html(index=False)
 	
-	if q['bajar'] == 'True':
-		search.to_csv(path_or_buf=response)
-
 	c={'request':request,
 		'search':s_html,
 		'por_palabra':por_palabra,
 		'sufijo':sufijo,
 		'warning':warning}
-		
-	return HttpResponse(t.render(c))
+
+	if q['bajar'] == 'True':
+		search.to_csv(path_or_buf=response)
+		response = HttpResponse(csv, content_type='text/csv')
+		response['Content-Disposition'] = 'attachment; filename=subject_log.csv'
+		return response
+	else:
+		return HttpResponse(t.render(c))
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
