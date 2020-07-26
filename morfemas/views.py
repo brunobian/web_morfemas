@@ -50,6 +50,7 @@ def search(request):
 		sufijo = search['Sufijo'][0]
 	elif k == 'palsPorSuj':
 		por_palabra = True
+		palabra = q[k]
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k]).values()))		
 		search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 		search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
