@@ -13,6 +13,7 @@
 			function variables() {
 				var sufijo  = "{{sufijo}}";
 				document.getElementById('sufijo').value = sufijo;
+				document.getElementById('sufijo2').value = sufijo;
 				var palabra  = "{{palabra}}";
 				document.getElementById('palabra').value = palabra;
 			}
@@ -66,7 +67,7 @@
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<input id=sufijo name="palsPorSuj" value="" type="hidden" >
+			<input id=sufijo2 name="palsPorSuj" value="" type="hidden" >
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
 	</div>
