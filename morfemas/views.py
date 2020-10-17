@@ -43,7 +43,7 @@ def search(request):
 		except:
 			newSearch = q[k]
 	elif k == 'palabra':
-			search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k].lower()).values()))
+		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k].lower()).values()))
 		try:
 			search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
@@ -51,13 +51,14 @@ def search(request):
 		except:	
 			newSearch = search['Sufijo'][0]
 	elif k == 'palsPorSuf':
-			search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k].lower()).values()))		
+		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k].lower()).values()))		
 		try:
 			search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 			newSearch = search['Sufijo'][0]
 		except:	
 			newSearch = search['Sufijo'][0]	
+			
 	s_html = search.to_html(index=False)
 	bajar = q[k]
 	
