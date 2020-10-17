@@ -77,6 +77,9 @@
 			<input name="bajar"      value="False"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
+		<form class="form-signin" method="get" action='/'>
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
+		</form>
 	</div>
 {%elif search_type == "palsPorSuf"%} 
 	<div>
@@ -89,6 +92,9 @@
 			<input name="sufijo" value=""       type="hidden" id=newSearch>
 			<input name="bajar"  value="False"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Ver sufijo" style="margin-left:25%; width:50%">
+		</form>
+		<form class="form-signin" method="get" action='/'>
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
 		</form>
 	</div>
 {%endif%}
