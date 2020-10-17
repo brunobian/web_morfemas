@@ -43,16 +43,16 @@ def search(request):
 		except:
 			newSearch = q[k]
 	elif k == 'palabra':
-		try:
 			search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k].lower()).values()))
+		try:
 			search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 			newSearch = search['Sufijo'][0]
 		except:	
 			newSearch = search['Sufijo'][0]
 	elif k == 'palsPorSuf':
-		try:
 			search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k].lower()).values()))		
+		try:
 			search = search[['palabra', 'numero', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada']
 			newSearch = search['Sufijo'][0]
