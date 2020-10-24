@@ -1,5 +1,17 @@
 Base de Datos
 
+Si hay una base de datos creada, primero eliminemos las tablas que tienen datos
+1) logearse con el user de postgres
+sudo su - postgres
+2) entrar a psql
+psql
+3) seleccionar la DB
+\c morfemas
+4) Borrar tablas (sufijos, palabras, text)
+DROP TABLE morfemas_text ;
+DROP TABLE morfemas_palabra ;
+DROP TABLE morfemas_sufijo ;
+
 Antes de manage.py
 $ CREATE DATABASE morfemas -U brunobian;
 $ ALTER USER brunobian WITH ENCRYPTED PASSWORD 'tusam.vive';
