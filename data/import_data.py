@@ -31,7 +31,12 @@ for l in f.readlines()[1:]:
     i = i+1
 
 cur.execute('DROP TABLE morfemas_palabra ;')
-cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, col1 VARCHAR (10000), col2 VARCHAR (100000 ), col3 VARCHAR ( 100000 ), col4 VARCHAR ( 1000000 ), col5 VARCHAR ( 1000000 ), col6 VARCHAR ( 1000000 ));')
+cur.execute('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY,'+ 
+              'palabra VARCHAR (10000),'+
+              'sufijo VARCHAR (100000 ),'+
+              'numero VARCHAR ( 100000 ),'+
+              'sufijada VARCHAR ( 1000000 ),'+
+              'Freq VARCHAR ( 1000000 ));')
 cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
