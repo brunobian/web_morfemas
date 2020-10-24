@@ -26,6 +26,7 @@ class Palabra(models.Model):
     sufijo = models.CharField(max_length=10000)
     numero = models.CharField(max_length=10000)
     sufijada = models.CharField(max_length=10000)
+    freq     = models.CharField(max_length=10000)
 
 class Text(models.Model):
     col1= models.CharField(max_length=100000)
