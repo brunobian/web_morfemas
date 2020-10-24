@@ -45,7 +45,7 @@ def search(request):
 	elif k == 'palabra':
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k].lower()).values()))
 		try:
-			search = search[['palabra', 'numero', 'sufijo', 'sufijada','freq']]
+			#search = search[['palabra', 'numero', 'sufijo', 'sufijada','freq']]
 			#search.columns = ['Palabra', 'Número', 'Sufijo', 'Sufijada','Frecuencia']
 			newSearch = search['Sufijo'][0]
 		except:	
