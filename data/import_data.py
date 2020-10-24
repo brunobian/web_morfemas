@@ -59,14 +59,10 @@ for l in f.readlines()[1:]:
     i = i+1
 
 
-#cur.execute('DROP TABLE morfemas_sufijo ;')
+cur.execute('DROP TABLE morfemas_sufijo ;')
 cur.execute('CREATE TABLE morfemas_sufijo (id serial NOT NULL PRIMARY KEY, col1 VARCHAR (10000), col2 VARCHAR (100000 ), col3 VARCHAR ( 100000 ), col4 VARCHAR ( 1000000 ), col5 VARCHAR ( 1000000 ), col6 VARCHAR ( 1000000 ), col7 VARCHAR ( 1000000 ), col8 VARCHAR ( 1000000 ), col9 VARCHAR ( 1000000 ));')
-cur.executemany('INSERT INTO morfemas_sufijo  VALUES VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
-conn.commit()
-f.close()
-cur = conn.cursor()
-
 cur.executemany('INSERT INTO morfemas_sufijo  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
+
