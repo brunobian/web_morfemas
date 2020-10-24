@@ -21,15 +21,17 @@ for l in f.readlines()[1:]:
     id = i
     tmp = l.split(',')
     print(tmp)
-    palabra = tmp[2].strip()
-    sufijo =  tmp[0].strip()
-    numero =  tmp[1].strip()
-    sufijada =  tmp[3].strip()
+    palabra  = tmp[1].strip()
+    sufijo   = tmp[3].strip()
+    numero   = tmp[2].strip()
+    sufijada = tmp[5].strip()
+    frec     = tmp[4].strip()
     
-    db_text.append((id, palabra, sufijo, numero, sufijada))
+    db_text.append((id, palabra, sufijo, numero, sufijada, frec))
     i = i+1
 
-cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s)',db_text)
+cur.execut('CREATE TABLE morfemas_palabra (id serial NOT NULL PRIMARY KEY, col1 VARCHAR (10000), col2 VARCHAR (100000 ), col3 VARCHAR ( 100000 ), col4 VARCHAR ( 1000000 ), col5 VARCHAR ( 1000000 ), col6 VARCHAR ( 1000000 ));')
+cur.executemany('INSERT INTO morfemas_palabra  VALUES (%s,%s,%s,%s,%s,%s)',db_text)
 conn.commit()
 f.close()
 cur = conn.cursor()
