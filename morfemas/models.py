@@ -11,20 +11,20 @@ import json
 
 	
 class Sufijo(models.Model):
-    sufijo = models.CharField(max_length=10000)
-    numero = models.CharField(max_length=10000)
-    frec_afijada = models.FloatField()
-    frec_pseudoafijada = models.FloatField()
-    count_afijada = models.FloatField()
+    sufijo              = models.CharField(max_length=10000)
+    numero              = models.CharField(max_length=10000)
+    frec_afijada        = models.FloatField()
+    frec_pseudoafijada  = models.FloatField()
+    count_afijada       = models.FloatField()
     count_pseudoafijada = models.FloatField()
-    prop_frec_afij = models.FloatField()
-    prop_count_afij = models.FloatField()
+    prop_frec_afij      = models.FloatField()
+    prop_count_afij     = models.FloatField()
     
 
 class Palabra(models.Model):
-    palabra = models.CharField(max_length=10000)
-    sufijo = models.CharField(max_length=10000)
-    numero = models.CharField(max_length=10000)
+    palabra  = models.CharField(max_length=10000)
+    sufijo   = models.CharField(max_length=10000)
+    numero   = models.CharField(max_length=10000)
     sufijada = models.CharField(max_length=10000)
     freq     = models.CharField(max_length=10000)
 
