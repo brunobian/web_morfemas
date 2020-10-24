@@ -71,3 +71,20 @@ conn.commit()
 f.close()
 cur = conn.cursor()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
