@@ -56,6 +56,7 @@ def search(request):
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
+			search.sort_values('Sufijo',inplace = True)
 			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
