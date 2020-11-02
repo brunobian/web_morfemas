@@ -56,7 +56,7 @@ def search(request):
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
-			df['Frec. léxica'] = df['Frec. léxica'].astype(int)
+			search['Frec. léxica'] = search['Frec. léxica'].astype(int)
 			search.sort_values(['Sufijo', 'Frec. léxica'],ascending = [False, True], inplace = True)
 			newSearch = search['Terminación'][0]
 		except:	
