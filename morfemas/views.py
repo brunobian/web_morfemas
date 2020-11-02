@@ -48,7 +48,7 @@ def search(request):
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
-			newSearch = search['Sufijo'][0]
+			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
 	elif k == 'palsPorSuf':
@@ -56,7 +56,7 @@ def search(request):
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
-			newSearch = search['Sufijo'][0]
+			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
 	
