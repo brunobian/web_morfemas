@@ -69,7 +69,7 @@ def search(request):
 		'search_type':k,
 		'newSearch':newSearch,
 		'bajar':bajar,
-		'warning':warning
+		'warning':warning,
 		'empty':empty}
 
 	if q['bajar'] == 'True':
