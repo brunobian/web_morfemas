@@ -1,22 +1,30 @@
-Base de Datos
-
-Si hay una base de datos creada, primero eliminemos las tablas que tienen datos
-1) logearse con el user de postgres
-sudo su - postgres
-2) entrar a psql
-psql
-3) seleccionar la DB
-\c morfemas
-4) Borrar tablas (sufijos, palabras, text)
-DROP TABLE morfemas_text ;
-DROP TABLE morfemas_palabra ;
-DROP TABLE morfemas_sufijo ;
+Para volver a llenar la Base de Datos
+(si se agregaron campos en alguna tabla, recordar modificar en models.py)
 
 Antes de manage.py
-$ CREATE DATABASE morfemas -U brunobian;
-$ ALTER USER brunobian WITH ENCRYPTED PASSWORD 'tusam.vive';
 
+Si hay una base de datos creada, primero eliminemos la base completa
+$ sudo su - postgres
+$ psql
+$ DROP DATABASE morfemas;
+$ CREATE DATABASE morfemas;
+$ GRANT ALL PRIVILEGES ON DATABASE morfemas to brunobian;
+
+Volver al user brunobian
+$ python3 manage.py makemigrations morfemas
+$ python3 manage.py migrate
+$ cd data
+$ python3 import_data.py
+
+-------------------------------
+__ ESTO NO LO USO, CREO ___
+-------------------------------
 En el import.py
 $ CREATE TABLE morfemas_text (id serial NOT NULL PRIMARY KEY, col1 VARCHAR (10000), col2 VARCHAR (100000 ), col3 VARCHAR ( 100000 ), col4 VARCHAR ( 1000000 ));
 $ GRANT ALL PRIVILEGES ON TABLE morfemas_text TO brunobian;
+
+
+
+$ ALTER USER brunobian WITH ENCRYPTED PASSWORD 'tusam.vive';
+
 
