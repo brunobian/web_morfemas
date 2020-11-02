@@ -74,6 +74,11 @@
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
 		</form>
 	</div>
+	<div style="margin-left:25%; width:50%">
+		<ul>
+		  <li><b>Frecuencia de palabra:</b> Frecuencia de aparición del ítem en el corpus LEXESP por cada millón de palabras</li>
+		</ul>
+	</div>
 {%elif search_type == "sufijo"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
@@ -89,6 +94,15 @@
 		<form class="form-signin" method="get" action='/'>
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
 		</form>
+	</div>
+	<div style="margin-left:25%; width:50%">
+		<ul>
+		  <li><b>Frecuencia Token Afijadas:</b> Suma de la frecuencia de todos los ítems que contienen ese afijo</li>
+		  <li><b>Frecuencia Token Pseudoafijadas:</b> Suma de la frecuencia de todos los ítems que contienen esta terminación sin tratarse de un afijo</li>
+		  <li><b>Proporción Token:</b> Frecuencia Token Afijadas / (Frecuencia Token Afijadas + Frecuencia Token Pseudoafijadas)</li>
+		  <li><b>Frecuencia Type Pseudoafijadas:</b> Cantidad de ítems que contienen esta terminación sin tratarse de un afijo</li>
+		  <li><b>Proporción Type:</b> Frecuencia Type Afijadas / (Frecuencia Type Afijadas + Frecuencia Type Pseudoafijadas)</li>
+		</ul>
 	</div>
 {%elif search_type == "palsPorSuf"%} 
 	<div>
@@ -108,17 +122,7 @@
 	</div>
 {%endif%}
 
-<form style="margin-left:25%; width:50%">
-<ul>
-  <li><b>Frecuencia de palabra:</b> Frecuencia de aparición del ítem en el corpus LEXESP por cada millón de palabras</li>
-  <li><b>Frecuencia Token Afijadas:</b> Suma de la frecuencia de todos los ítems que contienen ese afijo</li>
-  <li><b>Frecuencia Token Pseudoafijadas:</b> Suma de la frecuencia de todos los ítems que contienen esta terminación sin tratarse de un afijo</li>
-  <li><b>Proporción Token:</b> Frecuencia Token Afijadas / (Frecuencia Token Afijadas + Frecuencia Token Pseudoafijadas)</li>
-  <li><b>Frecuencia Type Pseudoafijadas:</b> Cantidad de ítems que contienen esta terminación sin tratarse de un afijo</li>
-  <li><b>Proporción Type:</b> Frecuencia Type Afijadas / (Frecuencia Type Afijadas + Frecuencia Type Pseudoafijadas)</li>
-</ul>
 
-</form>
 
 
 	
