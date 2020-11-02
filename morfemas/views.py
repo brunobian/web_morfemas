@@ -32,6 +32,7 @@ def search(request):
 	k = keys[0]
 	
 	warning = False
+	empty   = False
 	if k == 'sufijo':
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k].lower()).values()))
 		try:
@@ -58,16 +59,18 @@ def search(request):
 			newSearch = search['Sufijo'][0]
 		except:	
 			newSearch = ''
-			
+	
+	empty  = search.empty			
 	s_html = search.to_html(index=False)
-	bajar = q[k]
+	bajar  = q[k]
 	
 	c={'request':request,
 		'search':s_html,
 		'search_type':k,
 		'newSearch':newSearch,
 		'bajar':bajar,
-		'warning':warning}
+		'warning':warning
+		'empty':empty}
 
 	if q['bajar'] == 'True':
 		response = HttpResponse(content_type='text/csv')
