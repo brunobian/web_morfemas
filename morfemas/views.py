@@ -36,8 +36,8 @@ def search(request):
 	if k == 'sufijo':
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k].lower()).values()))
 		try:
-			search = search[['sufijo', 'numero', 'count_afijada', 'frec_afijada', 'count_pseudoafijada', 'frec_pseudoafijada', 'prop_count_afij', 'prop_frec_afij']]
-			search.columns = ['Sufijo', 'Número', 'Count afijadas', 'Freq afijadas', 'Count pseudoafijadas', 'Freq pseudoafijadas', 'Prop Count Afijadas', 'Prop Freq Afijadas']
+			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
+			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
 			newSearch = q[k]
 			if newSearch == 'aca':
 				warning = True		
