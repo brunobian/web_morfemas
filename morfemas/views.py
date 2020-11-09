@@ -25,7 +25,7 @@ def morfemas(request):
 
 def search(request):
 	
-	plurYalomorfos = pd.read_csv("../data/pluralesYalomorfos.csv")
+	plurYalomorfos = pd.read_csv("./data/pluralesYalomorfos.csv")
 
 	t = loader.get_template('search.html')
 	
