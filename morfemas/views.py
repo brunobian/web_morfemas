@@ -48,7 +48,8 @@ def search(request):
 		v_plur3 = plurYalom.loc[plurYalom['var_plur3'] == q[k]]
 		v_plur4 = plurYalom.loc[plurYalom['var_plur4'] == q[k]]
 		
-		tmp = pd.concat([sing, plur])
+		tmp = pd.concat([sing, v_sing1, v_sing2, v_sing3, v_sing4, 
+						 plur, v_plur1, v_plur2, v_plur3, v_plur4])
 		
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular'].iloc[0]).values()))		
 		try:
