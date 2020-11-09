@@ -24,6 +24,8 @@ def morfemas(request):
 	return HttpResponse(t.render(c))
 
 def search(request):
+	
+	plurYalomorfos = pd.read_csv("../data/pluralesYalomorfos.csv")
 
 	t = loader.get_template('search.html')
 	
@@ -38,6 +40,11 @@ def search(request):
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
+			
+			
+			q[k]
+			
+			
 			newSearch = q[k]
 			if newSearch == 'aca':
 				warning = True		
@@ -66,6 +73,7 @@ def search(request):
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
 	bajar  = q[k]
+	search = plurYalomorfos.to_html(index=False)
 	
 	c={'request':request,
 		'search':s_html,
