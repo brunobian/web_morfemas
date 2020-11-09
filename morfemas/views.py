@@ -40,7 +40,7 @@ def search(request):
 		plur = plurYalom.loc[plurYalom['plural'] == q[k]]
 		tmp = pd.concat([sing, plur])
 		
-		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular']).values()))		
+		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular'][0]).values()))		
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k].lower()).values()))		
 
 		try:
