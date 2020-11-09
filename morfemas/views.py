@@ -69,7 +69,7 @@ def search(request):
 		except:	
 			newSearch = ''
 	
-	search.drop_duplicates(inplace=True)
+	# ~ search.drop_duplicates(inplace=True)
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
 	s_html = tmp.to_html(index=False)
