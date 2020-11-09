@@ -25,7 +25,7 @@ def morfemas(request):
 
 def search(request):
 	
-	plurYalomorfos = pd.read_csv("/var/www/html/web_morfemas/data/pluralesYalomorfos.csv")
+	plurYalom = pd.read_csv("/var/www/html/web_morfemas/data/pluralesYalomorfos.csv")
 
 	t = loader.get_template('search.html')
 	
@@ -37,14 +37,12 @@ def search(request):
 	empty   = False
 	if k == 'sufijo':
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k].lower()).values()))
+		
+		tmp = plurYalom.iloc(plurYalom['singular'] == q[k])
+		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
-			
-			
-			q[k]
-			
-			
 			newSearch = q[k]
 			if newSearch == 'aca':
 				warning = True		
@@ -72,8 +70,9 @@ def search(request):
 	search.drop_duplicates(inplace=True)
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
+	s_html = tmp.to_html(index=False)
+
 	bajar  = q[k]
-	s_html = plurYalomorfos.to_html(index=False)
 	
 	c={'request':request,
 		'search':s_html,
