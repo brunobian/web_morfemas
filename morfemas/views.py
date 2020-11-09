@@ -36,12 +36,11 @@ def search(request):
 	warning = False
 	empty   = False
 	if k == 'sufijo':
-		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=q[k].lower()).values()))
-		
 		sing = plurYalom.loc[plurYalom['singular'] == q[k]]
 		plur = plurYalom.loc[plurYalom['plural'] == q[k]]
 		tmp = pd.concat([sing, plur])
 		
+		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular'].lower()).values()))		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
