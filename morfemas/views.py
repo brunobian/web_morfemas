@@ -73,7 +73,7 @@ def search(request):
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
 	bajar  = q[k]
-	search = plurYalomorfos.to_html(index=False)
+	s_html = plurYalomorfos.to_html(index=False)
 	
 	c={'request':request,
 		'search':s_html,
