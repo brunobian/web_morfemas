@@ -36,8 +36,18 @@ def search(request):
 	warning = False
 	empty   = False
 	if k == 'sufijo':
-		sing = plurYalom.loc[plurYalom['singular'] == q[k]]
+		sing    = plurYalom.loc[plurYalom['singular'] == q[k]]
+		v_sing1 = plurYalom.loc[plurYalom['var_sing1'] == q[k]]
+		v_sing2 = plurYalom.loc[plurYalom['var_sing2'] == q[k]]
+		v_sing3 = plurYalom.loc[plurYalom['var_sing3'] == q[k]]
+		v_sing4 = plurYalom.loc[plurYalom['var_sing4'] == q[k]]
+		
 		plur = plurYalom.loc[plurYalom['plural'] == q[k]]
+		v_plur1 = plurYalom.loc[plurYalom['var_plur1'] == q[k]]
+		v_plur2 = plurYalom.loc[plurYalom['var_plur2'] == q[k]]
+		v_plur3 = plurYalom.loc[plurYalom['var_plur3'] == q[k]]
+		v_plur4 = plurYalom.loc[plurYalom['var_plur4'] == q[k]]
+		
 		tmp = pd.concat([sing, plur])
 		
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular'].iloc[0]).values()))		
