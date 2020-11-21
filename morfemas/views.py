@@ -82,7 +82,7 @@ def search(request):
 	
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
-	tmp.drop_duplicates(inplace=True)
+	# ~ tmp.drop_duplicates(inplace=True)
 	# ~ s_html = tmp.to_html(index=False)
 
 	bajar  = q[k]
