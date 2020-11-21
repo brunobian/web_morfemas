@@ -64,7 +64,7 @@ def search(request):
 		search = pd.DataFrame(list(Palabra.objects.filter(palabra=q[k].lower()).values()))
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
-			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
+			search.columns = ['Palabra', 'Número','Frec. Léxica', 'Terminación', 'Sufijo']
 			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
@@ -72,9 +72,9 @@ def search(request):
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k].lower()).values()))		
 		try:
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
-			search.columns = ['Palabra', 'Número','Frec. léxica', 'Terminación', 'Sufijo']
-			search['Frec. léxica'] = search['Frec. léxica'].astype(int)
-			search.sort_values(['Sufijo', 'Frec. léxica'],ascending = [False, False], inplace = True)
+			search.columns = ['Palabra', 'Número','Frec. Léxica', 'Terminación', 'Sufijo']
+			search['Frec. Léxica'] = search['Frec. Léxica'].astype(int)
+			search.sort_values(['Sufijo', 'Frec. Léxica'],ascending = [False, False], inplace = True)
 			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
