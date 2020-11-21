@@ -36,27 +36,14 @@ def search(request):
 	warning = False
 	empty   = False
 	if k == 'sufijo':
-		sing    = plurYalom.loc[plurYalom['singular'] == q[k]]
-		v_sing1 = plurYalom.loc[plurYalom['var_sing1'] == q[k]]
-		v_sing2 = plurYalom.loc[plurYalom['var_sing2'] == q[k]]
-		v_sing3 = plurYalom.loc[plurYalom['var_sing3'] == q[k]]
-		v_sing4 = plurYalom.loc[plurYalom['var_sing4'] == q[k]]
-		
-		plur = plurYalom.loc[plurYalom['plural'] == q[k]]
-		v_plur1 = plurYalom.loc[plurYalom['var_plur1'] == q[k]]
-		v_plur2 = plurYalom.loc[plurYalom['var_plur2'] == q[k]]
-		v_plur3 = plurYalom.loc[plurYalom['var_plur3'] == q[k]]
-		v_plur4 = plurYalom.loc[plurYalom['var_plur4'] == q[k]]
-		
-		tmp = pd.concat([sing, v_sing1, v_sing2, v_sing3, v_sing4, 
-						 plur, v_plur1, v_plur2, v_plur3, v_plur4])
-		
+		alom = plurYalom.loc[plurYalom['singular'] == q[k] or plurYalom['plural'] == q[k]]
+				
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=tmp['singular'].iloc[0]).values()))		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
 			newSearch = q[k]
-			if tmp["var_sing1"].notna().values[0]:
+			if alom["alomorfos_sing"].notna().values[0]:
 				warning = True		
 		except:
 			newSearch = q[k]
