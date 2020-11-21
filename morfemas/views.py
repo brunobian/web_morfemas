@@ -41,12 +41,13 @@ def search(request):
 		alom = pd.concat([sing, plur])
 		
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=alom['singular'].iloc[0]).values()))		
+		if alom["alomorfos_sing"].notna().values[0]:
+			warning = True		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij', ]]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
 			newSearch = q[k]
-			if alom["alomorfos_sing"].notna().values[0]:
-				warning = True		
+
 		except:
 			newSearch = q[k]
 	elif k == 'palabra':
