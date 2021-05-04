@@ -60,15 +60,15 @@ def search(request):
 			newSearch = ''
 	elif k == 'palsPorSuf':
 		search = pd.DataFrame(list(Palabra.objects.filter(sufijo=q[k].lower()).values()))		
-		# ~ try:
-		search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
-		search.columns = ['Palabra', 'Número','Frec. Léxica', 'Terminación', 'Sufijo']
-		search['Frec. Léxica'] = search['Frec. Léxica'].astype(int)
-		search.sort_values(['Sufijo', 'Frec. Léxica'],ascending = [False, False], inplace = True)
-		newSearch = search['Terminación'][0]
-		# ~ except:	
-			# ~ newSearch = ''
-
+		try:
+			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
+			search.columns = ['Palabra', 'Número','Frec. Léxica', 'Terminación', 'Sufijo']
+			search['Frec. Léxica'] = search['Frec. Léxica'].astype(float)
+			search.sort_values(['Sufijo', 'Frec. Léxica'],ascending = [False, False], inplace = True)
+			newSearch = search['Terminación'][0]
+		except:	
+			newSearch = ''
+	
 	
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
