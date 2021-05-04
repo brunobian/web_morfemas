@@ -64,7 +64,7 @@ def search(request):
 			search = search[['palabra', 'numero','freq', 'sufijo', 'sufijada']]
 			search.columns = ['Palabra', 'Número','Frec. Léxica', 'Terminación', 'Sufijo']
 			search['Frec. Léxica'] = search['Frec. Léxica'].astype(float)
-			search = search[[search['Frec. Léxica'] > 1]
+			search = search[search['Frec. Léxica'] > 1]
 			search.sort_values(['Sufijo', 'Frec. Léxica'],ascending = [False, False], inplace = True)
 			newSearch = search['Terminación'][0]
 		except:	
