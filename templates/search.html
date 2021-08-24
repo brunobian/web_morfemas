@@ -90,14 +90,14 @@
 {%elif search_type == "familia"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>
-			<input name="palabra" value=""     type="hidden" id=bajar > 
-			<input name="bajar"   value="True" type="hidden"> 
+			<input name="sufijo" value=""      type="hidden" id=bajar> 
+			<input name="bajar"  value="True"  type="hidden"> 
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/search/'>
-			<input name="sufijo" value=""      type="hidden" id=newSearch >
-			<input name="bajar"  value="False" type="hidden"> 
-			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar este sufijo" style="margin-left:25%; width:50%">		
+			<input name="palsPorSuf" value=""       type="hidden" id=newSearch >
+			<input name="bajar"      value="False"  type="hidden"> 
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar todas las palabras con este sufijo" style="margin-left:25%; width:50%">
 		</form>
 		<form class="form-signin" method="get" action='/'>
 			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
@@ -105,9 +105,12 @@
 	</div>
 	<div style="margin-left:25%; width:50%">
 		<ul>
-		  <li><b>Frecuencia Léxica:</b> Frecuencia de aparición del ítem en el corpus LEXESP por cada millón de palabras. </li>
-		  <li><b>Terminación:</b> terminacion de la palabra. </li>
-		  <li><b>Sufijo:</b> ¿Es la terminación un sufijo? </li>
+		  <li><b>Frecuencia Token Afijadas:</b> Suma de la frecuencia de todos los ítems que contienen ese afijo</li>
+		  <li><b>Frecuencia Token Pseudoafijadas:</b> Suma de la frecuencia de todos los ítems que contienen esta terminación sin tratarse de un afijo</li>
+		  <li><b>Proporción Token:</b> Frecuencia Token Afijadas / (Frecuencia Token Afijadas + Frecuencia Token Pseudoafijadas)</li>
+		  <li><b>Frecuencia Type Afijadas:</b> Cantidad de ítems que contienen este afijo</li>
+		  <li><b>Frecuencia Type Pseudoafijadas:</b> Cantidad de ítems que contienen esta terminación sin tratarse de un afijo</li>
+		  <li><b>Proporción Type:</b> Frecuencia Type Afijadas / (Frecuencia Type Afijadas + Frecuencia Type Pseudoafijadas)</li>
 		</ul>
 	</div>
 {%elif search_type == "sufijo"%} 
