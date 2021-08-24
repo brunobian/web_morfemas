@@ -87,6 +87,29 @@
 		  <li><b>Sufijo:</b> ¿Es la terminación un sufijo? </li>
 		</ul>
 	</div>
+{%if search_type == "familia"%} 
+	<div>
+		<form class="form-signin" method="get" action='/search/'>
+			<input name="palabra" value=""     type="hidden" id=bajar > 
+			<input name="bajar"   value="True" type="hidden"> 
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Descargar tabla" style="margin-left:25%; width:50%">
+		</form>
+		<form class="form-signin" method="get" action='/search/'>
+			<input name="sufijo" value=""      type="hidden" id=newSearch >
+			<input name="bajar"  value="False" type="hidden"> 
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar este sufijo" style="margin-left:25%; width:50%">		
+		</form>
+		<form class="form-signin" method="get" action='/'>
+			<input class="btn btn-lg btn-primary btn-block" type="submit" value="Volver al buscador" style="margin-left:25%; width:50%">		
+		</form>
+	</div>
+	<div style="margin-left:25%; width:50%">
+		<ul>
+		  <li><b>Frecuencia Léxica:</b> Frecuencia de aparición del ítem en el corpus LEXESP por cada millón de palabras. </li>
+		  <li><b>Terminación:</b> terminacion de la palabra. </li>
+		  <li><b>Sufijo:</b> ¿Es la terminación un sufijo? </li>
+		</ul>
+	</div>
 {%elif search_type == "sufijo"%} 
 	<div>
 		<form class="form-signin" method="get" action='/search/'>

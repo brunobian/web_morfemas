@@ -74,7 +74,7 @@ def search(request):
 	elif k == 'familia':
 		search = pd.DataFrame(list(Sufijo.objects.filter(familia=float(q[k].replace(',','.'))).values()))
 		try:
-			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij','familia' ]]
+			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij','familia']]
 			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas','Número de Familia']
 			newSearch = q[k]
 
