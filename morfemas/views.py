@@ -71,7 +71,7 @@ def search(request):
 			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
-	elif k == 'familiaAlom':
+	elif k == 'familia':
 		search = pd.DataFrame(list(Sufijo.objects.filter(familia=q[k]).values()))		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij','familia' ]]
