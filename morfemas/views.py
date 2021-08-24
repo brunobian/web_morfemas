@@ -35,13 +35,15 @@ def search(request):
 	
 	warning = False
 	empty   = False
+	familia = 0
 	if k == 'sufijo':
 		sing = plurYalom.loc[plurYalom['singular'] == q[k]]
 		plur = plurYalom.loc[plurYalom['plural'] == q[k]]
 		alom = pd.concat([sing, plur])
 		
 		search = pd.DataFrame(list(Sufijo.objects.filter(sufijo=alom['singular'].iloc[0]).values()))		
-		if search["familia"].values[0]>0:
+		familia = search["familia"].values[0]
+		if familia > 0:
 			warning = True		
 		try:
 			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij','familia' ]]
@@ -69,7 +71,15 @@ def search(request):
 			newSearch = search['Terminación'][0]
 		except:	
 			newSearch = ''
-	
+	elif k == 'familiaAlom':
+		search = pd.DataFrame(list(Sufijo.objects.filter(familia=q[k]).values()))		
+		try:
+			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij','familia' ]]
+			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas','Número de Familia']
+			newSearch = q[k]
+
+		except:
+			newSearch = q[k]
 	
 	empty  = search.empty			
 	s_html = search.to_html(index=False)
@@ -84,7 +94,8 @@ def search(request):
 		'newSearch':newSearch,
 		'bajar':bajar,
 		'warning':warning,
-		'empty':empty}
+		'empty':empty,
+		'familia':familia}
 
 	if q['bajar'] == 'True':
 		response = HttpResponse(content_type='text/csv')

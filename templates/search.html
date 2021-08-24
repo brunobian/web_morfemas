@@ -38,9 +38,15 @@
 {%if warning%} 
 <div id="warning" align="center" style="margin-top:1%; margin-bottom:1%">
 	<div align="center" style="width:75%; background-color:#961e1e; border-color:#961e1e; height:90%" class="btn btn-lg btn-primary btn-block" >
-		Aviso: este morfema tiene alomorfos. Hacé click acá para más información
+		Aviso: este morfema tiene alomorfos. Hacé click acá para más información.
 	</div>
 </div>
+
+<form class="form-signin" method="get" action='/search/'>
+	<input name="familia" value="{{ familia }}"      type="hidden" id=newSearch >
+	<input name="bajar"  value="False" type="hidden"> 
+	<input class="btn btn-lg btn-primary btn-block" type="submit" value="Buscar esta familia de alomorfos" style="margin-left:25%; width:50%">		
+</form>
 {%endif%}
 
 <!-- Warning en caso de busqueda vacia  -->
