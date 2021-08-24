@@ -19,6 +19,7 @@ class Sufijo(models.Model):
     count_pseudoafijada = models.FloatField()
     prop_frec_afij      = models.FloatField()
     prop_count_afij     = models.FloatField()
+    familia             = models.FloatField()
     
 
 class Palabra(models.Model):
