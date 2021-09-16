@@ -74,12 +74,12 @@ def search(request):
 	elif k == 'familia':
 		search = pd.DataFrame(list(Sufijo.objects.filter(familia=float(q[k].replace(',','.'))).values()))
 		try:
-			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij']]
-			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
 			search.reset_index(inplace=True)
 			idx = search.index.tolist()
 			idx = idx[3:]
 			search = search.reindex(idx+[0,1,2])
+			search = search[['sufijo', 'numero', 'frec_afijada', 'frec_pseudoafijada', 'prop_frec_afij', 'count_afijada', 'count_pseudoafijada',  'prop_count_afij']]
+			search.columns = ['Sufijo', 'Número', 'Frec. Token Afijadas', 'Frec. Token Pseudoafijadas', 'Prop. Token Afijadas', 'Frec. Type Afijadas', 'Frec. Type Pseudoafijadas', 'Prop. Type Afijadas']
 
 			newSearch = q[k]
 
