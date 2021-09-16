@@ -79,7 +79,7 @@ def search(request):
 			search.reset_index(inplace=True)
 			idx = search.index.tolist()
 			idx = idx[3:]
-			search.reindex(idx+[0,1,2])
+			search = search.reindex(idx+[0,1,2])
 
 			newSearch = q[k]
 
