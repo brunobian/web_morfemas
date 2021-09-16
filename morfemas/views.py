@@ -37,6 +37,7 @@ def search(request):
 	empty   = False
 	familia = 0
 	if k == 'sufijo':
+		search = pd.DataFrame()
 		try:
 			sing = plurYalom.loc[plurYalom['singular'] == q[k]]
 			plur = plurYalom.loc[plurYalom['plural'] == q[k]]
